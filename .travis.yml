@@ -6,12 +6,11 @@ dist: trusty
 
 env:
   - VERSION=jessie VARIANT=9.6
-  - VERSION=slim VARIANT=9.6
+  - VERSION=jessie.slim VARIANT=9.6
 
 
 before_script:
   - env | sort
-  - cd "$VERSION"
   - image="saxix/python:$VERSION${VARIANT:+-${VARIANT}}"
 
 script:
