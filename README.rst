@@ -1,8 +1,9 @@
 saxix/pypg
 ----------
 
+.. image:: https://secure.travis-ci.org/saxix/docker-pypg.svg?branch=master
+            :target: https://travis-ci.org/saxix/docker-pypg
 
-[![Build Status](https://travis-ci.org/saxix/docker-pypg.svg)](https://travis-ci.org/saxix/docker-pypg)
 
 The `saxix/pypg` image provides a Docker container running Python 3.6 Postgres 9 with [PostGIS 2.4](http://postgis.net/) installed.
 These image are based on the official [`debian`](https://registry.hub.docker.com/_/debian/) images (standard and slim)
