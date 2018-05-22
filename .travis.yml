@@ -10,8 +10,8 @@ env:
 
 
 before_script:
-  - env | sort
   - image="saxix/python:$VERSION${VARIANT:+-${VARIANT}}"
+  - env | sort
 
 script:
   - mkdir ./data~

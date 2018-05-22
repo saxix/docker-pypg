@@ -1,8 +1,8 @@
 saxix/pypg
-----------
+==========
 
-.. image:: https://secure.travis-ci.org/saxix/docker-pypg.svg?branch=master
-            :target: https://travis-ci.org/saxix/docker-pypg
+.. image:: https://secure.travis-ci.com/saxix/docker-pypg.svg?branch=master
+            :target: https://travis-ci.com/saxix/docker-pypg
 
 
 The `saxix/pypg` image provides a Docker container running Python 3.6 Postgres 9 with [PostGIS 2.4](http://postgis.net/) installed.
@@ -17,8 +17,10 @@ The default database created by the parent `postgres` image will have the follow
 * `postgis_topology`
 
 
-## Usage
+Usage
+-----
+
 
 In order to run a basic container capable of serving a PostGIS-enabled database, start a container as follows:
 
-    docker run -d saxix/pypg
+    docker run -d saxix/pypg:jessie
