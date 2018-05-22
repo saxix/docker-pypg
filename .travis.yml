@@ -1,0 +1,24 @@
+---
+language: bash
+services: docker
+
+dist: trusty
+
+env:
+  - VERSION=jessie VARIANT=9.6
+  - VERSION=slim VARIANT=9.6
+
+
+before_script:
+  - env | sort
+  - cd "$VERSION"
+  - image="saxix/python:$VERSION${VARIANT:+-${VARIANT}}"
+
+script:
+  - mkdir ./data~
+  - docker build --pull -t "$image" .
+  - docker run -it \
+      -e POSTGRES_DB=${POSTGRES_DB} \
+      -v ${PWD}/data~:/var/lib/postgresql/${VARIANT}/main \
+      -v ${PWD}/tests:/tests \
+      $image /bin/bash -c "cd /tests && /tests/runtests.sh"
