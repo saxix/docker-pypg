@@ -19,7 +19,7 @@ endef
 define testme
 $1:
 	PG_MAJOR=$(shell echo $1 | sed -e 's/.*-\(.*\)-test/\1/g')
-	rm -fr ~data
+#	rm -fr ~data
 	docker run -it \
 		-e POSTGRES_DB=${POSTGRES_DB} \
 		-v ${PWD}/tests:/tests \

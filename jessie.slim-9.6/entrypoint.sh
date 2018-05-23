@@ -2,16 +2,19 @@
 set -ex
 #
 DATADIR=/var/lib/postgresql/9.6/main
+
+mkdir -p "$DATADIR"
+chown -R postgres "$DATADIR" 2>/dev/null || :
+chmod 700 "$DATADIR" 2>/dev/null || :
+
 if [ ! -f "$DATADIR/PG_VERSION" ]; then
-    mkdir -p "$DATADIR"
-    chown -R postgres "$DATADIR" 2>/dev/null || :
-    chmod 700 "$DATADIR" 2>/dev/null || :
     su - postgres -c "/usr/lib/postgresql/9.6/bin/initdb $DATADIR --username=postgres"
 fi
-service postgresql start
+
+su - postgres -c "/usr/lib/postgresql/9.6/bin/pg_ctl -D $DATADIR -l logfile start"
 
 if [ -n "$POSTGRES_DB" ]; then
-    createdb --username postgres "$POSTGRES_DB"
+    createdb --username postgres "$POSTGRES_DB" 2>/dev/null || :
 fi
 
 exec "$@"
