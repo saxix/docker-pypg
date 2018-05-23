@@ -14,6 +14,7 @@ before_script:
   - env | sort
 
 script:
+  - cp scripts/entrypoint.sh $1/~entrypoint.sh
   - cd ${VERSION}-${VARIANT}
   - docker build --pull -t "$image" .
   - cd ..
