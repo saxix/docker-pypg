@@ -17,8 +17,8 @@ before_script:
 script:
   - mkdir ./data~
   - docker build --pull -t "$image" .
-  - docker run -it \
+  - docker run \
       -e POSTGRES_DB=test \
-      -v ${PWD}/data~:/var/lib/postgresql/${VARIANT}/main \
-      -v ${PWD}/tests:/tests \
-      $image /bin/bash -c "cd /tests && /tests/runtests.sh"
+      -v `pwd`/data~:/var/lib/postgresql/${VARIANT}/main \
+      -v `pwd`/tests:/tests \
+      -it $image /bin/bash -c "cd /tests && /tests/runtests.sh"
