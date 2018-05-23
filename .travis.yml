@@ -10,11 +10,11 @@ env:
 
 
 before_script:
-  - cd ${VERSION}-${VARIANT}
   - image="saxix/python:$VERSION${VARIANT:+-${VARIANT}}"
   - env | sort
 
 script:
-  - mkdir ./data
+  - cd ${VERSION}-${VARIANT}
   - docker build --pull -t "$image" .
+  - cd ..
   - docker run -it -e POSTGRES_DB=test -v $PWD/data:/var/lib/postgresql/${VARIANT}/main -v $PWD/tests:/tests $image /bin/bash -c "cd /tests && /tests/runtests.sh"
