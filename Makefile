@@ -28,33 +28,10 @@ $1:
 endef
 
 $(foreach version,$(VERSIONS),$(eval $(call release,$(version))))
-
-
 $(foreach test,$(TESTS),$(eval $(call testme,$(test))))
 
 
 .PHONY: all build update $(VERSIONS)
 
-
-#build2:
-#	docker build --squash --rm --compress -t ${NAME} --build-arg DISTRO=${DISTRO} -f Dockerfile .
-#
-#run:
-#	docker run -it \
-#		-v ${PWD}/~data:${PG_DATADIR} \
-#		-v ${PWD}/scripts:/scripts \
-#		${NAME} /bin/bash
-#
-#test:
-#	docker run -it \
-#		-e POSTGRES_DB=${POSTGRES_DB} \
-#		-v ${PWD}/tests:/tests \
-#		-v ${PWD}/~data:${PG_DATADIR} \
-#		${NAME} /bin/bash -c "cd /tests && /tests/runtests.sh"
-#
-#
 clean:
 	rm -fr ~data
-#
-#fullclean: clean
-#	docker rmi -f ${NAME}

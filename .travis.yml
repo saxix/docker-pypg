@@ -15,10 +15,6 @@ before_script:
   - env | sort
 
 script:
-  - mkdir ./data~
+  - mkdir ./data
   - docker build --pull -t "$image" .
-  - docker run \
-      -e POSTGRES_DB=test \
-      -v `pwd`/data~:/var/lib/postgresql/${VARIANT}/main \
-      -v `pwd`/tests:/tests \
-      -it $image /bin/bash -c "cd /tests && /tests/runtests.sh"
+  - docker run -it -e POSTGRES_DB=test -v $PWD/data:/var/lib/postgresql/${VARIANT}/main -v $PWD/tests:/tests $image /bin/bash -c "cd /tests && /tests/runtests.sh"
