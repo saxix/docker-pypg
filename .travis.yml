@@ -5,7 +5,6 @@ services: docker
 dist: trusty
 
 env:
-  - POSTGRES_DB=test
   - VERSION=jessie VARIANT=9.6
   - VERSION=jessie.slim VARIANT=9.6
 
@@ -19,7 +18,7 @@ script:
   - mkdir ./data~
   - docker build --pull -t "$image" .
   - docker run -it \
-      -e POSTGRES_DB=${POSTGRES_DB} \
+      -e POSTGRES_DB=test \
       -v ${PWD}/data~:/var/lib/postgresql/${VARIANT}/main \
       -v ${PWD}/tests:/tests \
       $image /bin/bash -c "cd /tests && /tests/runtests.sh"
