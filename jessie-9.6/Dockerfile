@@ -69,7 +69,7 @@ RUN pip install --upgrade \
 
 RUN mkdir /data
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ~entrypoint.sh /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
 

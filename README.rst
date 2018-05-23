@@ -1,7 +1,7 @@
 saxix/pypg
 ==========
 
-.. image:: https://secure.travis-ci.com/saxix/docker-pypg.svg?branch=master
+.. image:: https://travis-ci.com/saxix/docker-pypg.svg?branch=master
             :target: https://travis-ci.com/saxix/docker-pypg
 
 

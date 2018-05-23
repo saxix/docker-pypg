@@ -13,6 +13,7 @@ test: $(TESTS)
 
 define release
 $1:
+	cp scripts/entrypoint.sh $1/~entrypoint.sh
 	@docker build --squash -t saxix/pypg:$(shell echo $1 | sed -e 's/-.*//g') $1
 endef
 
@@ -34,4 +35,5 @@ $(foreach test,$(TESTS),$(eval $(call testme,$(test))))
 .PHONY: all build update $(VERSIONS)
 
 clean:
+	find . -name '~entrypoint.sh' -exec rm {} +
 	rm -fr ~data

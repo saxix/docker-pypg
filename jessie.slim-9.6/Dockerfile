@@ -163,7 +163,7 @@ RUN pip install --upgrade \
 #RUN echo "host  all all 127.0.0.1/32   trust" >> /etc/postgresql/9.4/main/pg_hba.conf
 RUN mkdir /data
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ~entrypoint.sh /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
 
