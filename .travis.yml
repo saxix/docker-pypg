@@ -5,6 +5,7 @@ services: docker
 dist: trusty
 
 env:
+  - POSTGRES_DB=test
   - VERSION=jessie VARIANT=9.6
   - VERSION=jessie.slim VARIANT=9.6
 
